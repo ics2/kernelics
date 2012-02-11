@@ -1,0 +1,3 @@
+#!/bin/sh
+make gio_defconfig
+make -j 2
