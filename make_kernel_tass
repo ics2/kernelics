@@ -1,0 +1,9 @@
+#!/bin/sh
+make tass_defconfig
+make -j `cat /proc/cpuinfo | grep "^processor" | wc -l`
+if [ "$?" == "0" ]
+then
+cd ramdisk
+./repack_bootimg.pl ../arch/arm/boot/zImage ./ramdisk_tass ../boot.img
+cd ..
+fi
