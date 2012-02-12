@@ -1,3 +1,9 @@
 #!/bin/sh
 make gio_defconfig
 make -j 2
+if [ "$?" == "0" ]
+then
+cd ramdisk
+./repack_bootimg.pl ../arch/arm/boot/zImage ./ramdisk_gio ../boot.img
+cd ..
+fi
