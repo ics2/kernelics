@@ -192,7 +192,14 @@ export KBUILD_BUILDHOST := $(SUBARCH)
 #CROSS_COMPILE	?=
 #CROSS_COMPILE	?= $(CONFIG_CROSS_COMPILE:"%"=%)
 ARCH            = arm
-CROSS_COMPILE   = /home/marcin/android_toolchain/linux-x86/toolchain/arm-eabi-4.4.3/bin/arm-eabi-
+
+# some trick for better multi user -phiexz-
+whoami := $(shell whoami)
+ifeq ($(whoami),dhiika)
+	CROSS_COMPILE = ../prebuilt/Sourcery_G++/bin/arm-none-eabi-
+else
+	CROSS_COMPILE   = /home/marcin/android_toolchain/linux-x86/toolchain/arm-eabi-4.4.3/bin/arm-eabi-
+endif
 
 # Architecture as present in compile.h
 UTS_MACHINE 	:= $(ARCH)
