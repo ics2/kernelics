@@ -1,6 +1,6 @@
 #!/bin/sh
 make gio_defconfig
-make -j 2
+make -j `cat /proc/cpuinfo | grep "^processor" | wc -l`
 if [ "$?" == "0" ]
 then
 cd ramdisk
