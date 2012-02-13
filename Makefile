@@ -196,7 +196,7 @@ ARCH            = arm
 # some trick for better multi user -phiexz-
 whoami := $(shell whoami)
 ifeq ($(whoami),dhiika)
-	CROSS_COMPILE = ../prebuilt/Sourcery_G++/bin/arm-none-eabi-
+	CROSS_COMPILE = /home/dhiika/source/prebuilt/Sourcery_G++/bin/arm-none-eabi-
 else
 	CROSS_COMPILE   = /home/marcin/android_toolchain/linux-x86/toolchain/arm-eabi-4.4.3/bin/arm-eabi-
 endif
