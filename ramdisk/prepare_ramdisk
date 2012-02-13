@@ -1,0 +1,20 @@
+#!/bin/sh
+cd ./files
+rm -f ./data/DUMMY
+rm -f ./dev/DUMMY
+rm -f ./proc/DUMMY
+rm -f ./sys/DUMMY
+rm -f ./system/DUMMY
+mv ./init.*.rc ./init.$1.rc
+mv ./ueventd.*.rc ./ueventd.$1.rc
+cd ./lib/modules
+mv ./fsr.mo ./fsr.ko
+mv ./fsr_stl.mo ./fsr_stl.ko
+mv ./sec_param.mo ./sec_param.ko
+cd ../../../
+./repack_bootimg.pl ../arch/arm/boot/zImage ./files ../boot.img
+cd ./files/lib/modules
+mv ./fsr.ko ./fsr.mo
+mv ./fsr_stl.ko ./fsr_stl.mo
+mv ./sec_param.ko ./sec_param.mo
+cd ../../../

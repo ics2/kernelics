@@ -4,6 +4,6 @@ make -j `cat /proc/cpuinfo | grep "^processor" | wc -l`
 if [ "$?" == "0" ]
 then
 cd ramdisk
-./repack_bootimg.pl ../arch/arm/boot/zImage ./ramdisk_cooper ../boot.img
+./prepare_ramdisk gt-s5830
 cd ..
 fi
