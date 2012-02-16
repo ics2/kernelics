@@ -191,6 +191,9 @@ on post-fs
     chown root root /cache/lost+found
     chmod 0770 /cache/lost+found
 
+    # create directory for DRM plug-ins
+    mkdir /data/drm 0774 drm drm
+
     # allow net_raw to have access to /dev/socket directory
     chown root net_raw /dev/socket
     chmod 0775 /dev/socket
@@ -347,6 +350,7 @@ service servicemanager /system/bin/servicemanager
     critical
     onrestart restart zygote
     onrestart restart media
+    onrestart restart drm
 
 service vold /system/bin/vold
     socket vold stream 0660 root mount
@@ -378,6 +382,8 @@ service zygote /system/bin/app_process -Xzygote /system/bin --zygote --start-sys
     onrestart write /sys/power/state on
     onrestart restart media
     onrestart restart netd
+
+service drm /system/bin/drmserver
 
 service media /system/bin/mediaserver
     user media
