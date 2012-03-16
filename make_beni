@@ -1,0 +1,3 @@
+#!/bin/sh
+make beni_defconfig
+make -j `cat /proc/cpuinfo | grep "^processor" | wc -l`

@@ -1,0 +1,3 @@
+#!/bin/sh
+make cooper_defconfig
+make -j `cat /proc/cpuinfo | grep "^processor" | wc -l`
