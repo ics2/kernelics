@@ -965,13 +965,13 @@ static int msm_batt_power_get_property(struct power_supply *psy,
 		val->intval = msm_batt_info.batt_technology;
 		break;
 	case POWER_SUPPLY_PROP_VOLTAGE_MAX_DESIGN:
-		val->intval = msm_batt_info.voltage_max_design;
+		val->intval = msm_batt_info.voltage_max_design*1000;
 		break;
 	case POWER_SUPPLY_PROP_VOLTAGE_MIN_DESIGN:
-		val->intval = msm_batt_info.voltage_min_design;
+		val->intval = msm_batt_info.voltage_min_design*1000;
 		break;
 	case POWER_SUPPLY_PROP_VOLTAGE_NOW:
-		val->intval = msm_batt_info.battery_voltage;
+		val->intval = msm_batt_info.battery_voltage*1000;
 		break;
 	case POWER_SUPPLY_PROP_CAPACITY:
 		val->intval = msm_batt_info.batt_capacity;
@@ -1030,14 +1030,14 @@ extern int fsa9280_i2c_read(unsigned char u_addr, unsigned char *pu_data);
 #define FSA_DTYPE1 	0x0A
 #define FSA_DTYPE2 	0x0B
 
-#define BATT_LOW_VOLT		3400
+#define BATT_LOW_VOLT		3350
 #define BATT_LEVEL1_VOLT	3550
 #define BATT_LEVEL2_VOLT	3690
 #define BATT_LEVEL3_VOLT	3730
 #define BATT_LEVEL4_VOLT	3770
 #define BATT_LEVEL5_VOLT	3850
 #define BATT_LEVEL6_VOLT	3950
-#define BATT_FULL_VOLT		4200
+#define BATT_FULL_VOLT		4215
 #define BATT_RECHAR_VOLT	4140
 
 #define BATT_LOW_ADC		2315
